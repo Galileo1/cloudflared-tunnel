@@ -3,8 +3,7 @@ FROM python:3.11-slim
 LABEL maintainer="galileo1"
 
 # Create a non-root user `adduser` and group `addgroup`
-RUN addgroup -S appgroup \
-    && adduser -S -G appgroup appuser
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 
 WORKDIR /app
 
