@@ -10,7 +10,7 @@ CLOUDFLARE_ACCOUNT_ID = os.getenv("CLOUDFLARE_ACCOUNT_ID")
 CLOUDFLARE_ZONE_ID = os.getenv("CLOUDFLARE_ZONE_ID")
 CLOUDFLARE_ZONE = os.getenv("CLOUDFLARE_ZONE_NAME")
 TUNNEL_NAME = os.getenv("TUNNEL_NAME", "dummy-tunnel")
-CLOUDFLARE_SECRET_NAME = "cloudflare-tunnel-credentials"
+CLOUDFLARE_SECRET_NAME = "cloudflared"
 CLOUDFLARE_SECRET_NAMESPACE = "cloudflared"
 DNS_REC_NAME = f'{TUNNEL_NAME}-cfargotunnel'
 

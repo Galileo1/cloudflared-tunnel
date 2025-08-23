@@ -3,7 +3,7 @@ FROM python:3.11-slim
 LABEL maintainer="galileo1"
 
 # Create a non-root user `adduser` and group `addgroup`
-RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+RUN groupadd -g 1001 appuser && useradd -u 1001 -g appuser -s /bin/bash -m appuser
 
 WORKDIR /app
 
@@ -13,10 +13,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy app files and change ownership
 COPY ./tunnel_init.py .
-RUN chown -R appuser:appgroup /app
+RUN chown -R appuser:appuser /app
 
-# Switch to non-root
-USER appuser
+# Drop root privileges
+USER 1001:1001
 
 # Run your script as the default entrypoint
 CMD ["python", "tunnel_init.py"]
